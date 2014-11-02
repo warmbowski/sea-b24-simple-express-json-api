@@ -8,16 +8,27 @@ var webapp = 'http://localhost:8080'
 
 describe('Simple JSON API', function() {
     
-  it('should send the local time');
+  it('should send the local time', function () {
+    // Used chai docs to make req and deal with res - https://www.npmjs.org/package/chai-http
+    // Also peeked at jacshfr's pull request to properly form the .get method into a callback (was using .end to no avail)
+    chai.request(webapp)
+      .get('/localtime', function() {
+        expect(res).to.have.status(200);
+        var d = new Date();
+        expect(res).to.be.eql(d.toLocaleFormat() + ' blah!!');
+      });
+      
+  });
     
     
   it('should greet someone', function () {
-    // Used chai docs to make req and deal with res - https://www.npmjs.org/package/chai-http
+
     chai.request(webapp)
       .get('/myname/test', function() {
         expect(res).to.have.status(200);
-        expect(res).to.have.param('name', 'test');
+        expect(res).to.have.param('name1', 'test');
         expect(res).to.be.json;
       });
+      
   });
 });
