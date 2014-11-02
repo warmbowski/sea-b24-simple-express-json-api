@@ -11,6 +11,7 @@ describe('Simple JSON API', function() {
     
   it('should send the local time', function (done) {
     // Used chai docs to make req and deal with res - https://www.npmjs.org/package/chai-http
+    // Help from github:makakoa getting tests to work by passing done param
     chai.request('http://localhost:' + port)
       .get('/localtime')
       .end(function(err, res) {
