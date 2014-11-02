@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var express = require('express');
 
 var app = express();
@@ -11,15 +11,14 @@ app.get('/', function(req, res){
 });
 
 //app.get code mainly built with research on http://expressjs.com/4x/api.html
-app.get('/myname/:name', function(req, res) {    //
+app.get('/myname/:name', function(req, res) {
   var message = { msg : "Hello " + req.param('name') + "!" };
-  console.log(message);
   res.status(200);
   res.json(message);  //http://stackoverflow.com/a/10667299
 });
 
 app.get('/localtime', function(req, res) {
-  var localtime = new Date();
+  var localtime = new Date();  //date object and it's methods researched on MDN
   res.status(200);
   res.send(localtime.toLocaleString());
 });
