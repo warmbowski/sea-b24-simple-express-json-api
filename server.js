@@ -5,7 +5,9 @@ var app = express();
 var port = process.env.PORT ? process.env.PORT : 3000;
 
 app.get('/', function(req, res){
-  var html = 'Hello World';
+  var html = '<h2>Hello World</h2>' +
+  '<a href="/localtime">Local Time</a> | ' +
+  '<a href="/myname/George">Name API</a>';
   res.status(200);
   res.send(html);
 });
